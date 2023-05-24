@@ -1,12 +1,27 @@
+'use client'
+
 import styles from './page.module.css'
+import Form from '../components/Form/form'
+import { useState } from 'react'
 
 export default function Home() {
+
+  // TOGGLE THAT OPEN THE ADD FORM
+  const [formDisplay, setFormDisplay] = useState(false);
+
+  const toggleDisplayForm = () => {
+    setFormDisplay(!formDisplay);
+  };
+
   return (
     <main className={styles.main}>
 
       <div className={styles.inputs__main}>
         <input className={styles.search} type="search" placeholder='Search contact' />
-        <button className={styles.add}>ADD CONTACT</button>
+        <button className={styles.add} onClick={toggleDisplayForm}>ADD CONTACT</button>
+        {formDisplay && (
+          <Form />
+        )}
       </div>
 
       <div className={styles.book}>
@@ -17,31 +32,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.popup}>
-
-        <div className={styles.container__close}>
-          <div className={styles.close}>X</div>
-        </div>
-
-        <div className={styles.form}>
-          <div className={styles.inputs__form}>
-            <input className={styles.add__firstname} type="text" placeholder='Firstname' />
-            <input className={styles.add__lastname} type="text" placeholder='Lastname'/>
-            <input className={styles.add__email} type="text" placeholder='Email'/>
-            <input className={styles.add__birth} type="text" placeholder='Date of birth'/>
-          </div>
-
-          <div className={styles.add__informations}>
-            <textarea className={styles.text__informations} placeholder='Additional informations' />
-          </div>
-
-          <div className={styles.buttons}>
-            <button className={styles.save}>Save</button>
-            <button className={styles.delete}>Delete</button>
-          </div>
-        </div>
-
-      </div>
+      
 
     </main>
   )
