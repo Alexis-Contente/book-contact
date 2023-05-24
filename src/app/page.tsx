@@ -19,7 +19,9 @@ export default function Home() {
 
       <div className={styles.popup}>
 
-        <div className={styles.close}>X</div>
+        <div className={styles.container__close}>
+          <div className={styles.close}>X</div>
+        </div>
 
         <div className={styles.form}>
           <div className={styles.inputs__form}>
@@ -30,7 +32,7 @@ export default function Home() {
           </div>
 
           <div className={styles.add__informations}>
-            <input className={styles.input__informations} type="text" placeholder='Additional informations' />
+            <textarea className={styles.text__informations} placeholder='Additional informations' />
           </div>
 
           <div className={styles.buttons}>

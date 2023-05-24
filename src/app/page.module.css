@@ -2,7 +2,10 @@
   margin: 100px 400px 100px 400px;
 }
 
-.inputs__main, .book {
+/* CONTAINERS MAIN */
+
+.inputs__main, 
+.book {
   background-color: #FFFFFF;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -19,8 +22,14 @@
   
 }
 
+/* DETAILS INPUTS MAIN */
+
 .search {
   width: 40%;
+  border: none;
+  border-left: 2px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 2px;
 }
 
 .add {
@@ -39,10 +48,14 @@
   background-color: #376FC6;
 }
 
+/* LIST CONTACT */
+
 .card {
   padding: 25px 50px 25px 50px;
   margin-bottom: 25px;
 }
+
+/* FORM ADD CONTACT */
 
 .popup {
   display: flex;
@@ -57,11 +70,29 @@
   top: 0;
   right: 0;
   width: 40vw;
-  height: 100vh;
+  /* height: 100vh; */
+}
+
+/* DETAILS FORM ADD CONTACT */
+
+.container__close {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .close {
+  margin-bottom: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #FFFFFF;;
+  color: #CB4242;
+  padding: 2px;
+  border-radius: 5px;
+}
 
+.close:hover {
+  background-color: #CB4242;
+  color: #FFFFFF;;
 }
 
 .form {
@@ -74,20 +105,36 @@
   flex-direction: column;
 }
 
-.add__firstname, .add__lastname, .add__email, .add__birth {
+.add__firstname,
+.add__lastname,
+.add__email,
+.add__birth {
   margin-bottom: 15px;
   height: 50px;
-  font-size: 25px;
+  font-size: 20px;
+  border: none;
+  border-left: 2px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 2px;
 }
 
 .add__informations {
   display: flex;
   margin-bottom: 15px;
-  width: 100;
+  width: 100%;
 }
 
-.input__informations {
+.text__informations {
   width: 100%;
+  height: 250px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .buttons {
@@ -95,7 +142,8 @@
   justify-content: space-around;
 }
 
-.save, .delete {
+.save,
+.delete {
   width: 30%;
   padding: 10px 0 10px 0;
   font-size: 20px;
