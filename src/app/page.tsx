@@ -1,7 +1,8 @@
 'use client'
 
-import styles from './page.module.css'
-import { useState } from 'react'
+import styles from './page.module.css';
+import { useState } from 'react';
+import { useRef } from 'react';
 
 export default function Home() {
 
@@ -12,37 +13,40 @@ const toggleDisplayForm = () => {
   setFormDisplay(!formDisplay);
 };
 
-// CROSS THAT CLOSE THE FORM
-const [open, setOpen] = useState(true);
-
-const handleOpen = () => {
-    setOpen(false);
-    };
-
 // FUNCTIONS THAT RETRIEVE INFORMATIONS FROM THE ADD FORM
-const [firstname, setFirstname] = useState('');
-const [lastname, setLastname] = useState('');
-const [email, setEmail] = useState('');
-const [birth, setBirth] = useState('');
-const [informations, setInformations] = useState('');
+// const [firstname, setFirstname] = useState('');
+// const [lastname, setLastname] = useState('');
+// const [email, setEmail] = useState('');
+// const [birth, setBirth] = useState('');
+// const [informations, setInformations] = useState('');
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-}
+// const handleSubmit = (e: any) => {
+//   e.preventDefault();
+// }
 
 // VERIFY INFORMATIONS RECOVERY
-console.log('Firstname:', firstname);
-console.log('Lastname:', lastname);
-console.log('Email:', email);
-console.log('Date of birth:', birth);
-console.log('Additional informations:', informations);
+// console.log('Firstname:', firstname);
+// console.log('Lastname:', lastname);
+// console.log('Email:', email);
+// console.log('Date of birth:', birth);
+// console.log('Additional informations:', informations);
 
-// RESET FORM FIELDS
-// setFirstname('');
-// setLastname('');
-// setEmail('');
-// setBirth('');
-// setInformations('');
+const firstnameRef = useRef();
+const lastnameRef = useRef();
+const emailRef = useRef();
+const birthRef = useRef();
+const informationsRef = useRef();
+
+const handleSubmit = (e: any) => {
+  e.preventDefault();
+
+const firstname = firstnameRef.current.value;
+const lastname = lastnameRef.current.value;
+const email = emailRef.current.value;
+const birth = birthRef.current.value;
+const informations = informationsRef.current.value;
+
+console.log(firstname, lastname, email, birth, informations);
 
   return (
     <main className={styles.main}>
@@ -54,81 +58,82 @@ console.log('Additional informations:', informations);
           
           <div>
             {open && (
-                <div className={styles.popup}>
+              <div className={styles.popup}>
                     
-                    <div className={styles.container__close}>
-                        <button className={styles.close} onClick={handleOpen}>X</button>
-                    </div>
-
-                    <form className={styles.form} onSubmit={handleSubmit}>
-                        <div className={styles.inputs__form}>
-                            <label htmlFor="firstname">
-                              <input
-                                className={styles.add__firstname}
-                                type='text'
-                                placeholder='Firstname'
-                                value={firstname}
-                                onChange={(e) => setFirstname(e.target.value)}
-                                required
-                              />
-                            </label>
-                            <label htmlFor="lastname">
-                              <input
-                                className={styles.add__lastname}
-                                type='text'
-                                placeholder='Lastname'
-                                value={lastname}
-                                onChange={(e) => setLastname(e.target.value)}
-                                required
-                              />
-                            </label>
-                            <label htmlFor="email">
-                              <input
-                                className={styles.add__email}
-                                type="text"
-                                placeholder='Email'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                              />
-                            </label>
-                            <label htmlFor="birth">
-                              <input
-                                className={styles.add__birth}
-                                type="text"
-                                placeholder='Date of birth'
-                                value={birth}
-                                onChange={(e) => setBirth(e.target.value)}
-                                required
-                              />
-                            </label>
-                        </div>
-
-                        <div className={styles.add__informations}>
-                          <label htmlFor="informations">
-                            <textarea
-                              className={styles.text__informations}
-                              placeholder='Additional informations'
-                              value={informations}
-                              onChange={(e) => setInformations(e.target.value)}
-                            />
-                          </label>
-                        </div>
-
-                        <div className={styles.buttons}>
-                            <button
-                              className={styles.save}
-                              name='save'
-                              type='submit'>Save</button>
-                            <button
-                              className={styles.delete}
-                              name='delete'
-                              type='submit'>Delete</button>
-                        </div>
-                    </form>
+                <div className={styles.container__close}>
+                  <button className={styles.close} onClick={toggleDisplayForm}>X</button>
                 </div>
+
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <div className={styles.inputs__form}>
+                    <div className={styles.names}>
+                      <label htmlFor="firstname">
+                        <input
+                          className={styles.add__firstname}
+                          type='text'
+                          placeholder='Firstname'
+                          ref={firstname}
+                          required
+                        />
+                      </label>
+                      <label htmlFor="lastname">
+                        <input
+                          className={styles.add__lastname}
+                          type='text'
+                          placeholder='Lastname'
+                          ref={lastname}    
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className={styles.email}>
+                      <label htmlFor="email">
+                        <input
+                          className={styles.add__email}
+                          type="text"
+                          placeholder='Email'
+                          ref={email}                              
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className={styles.birth}>
+                      <label htmlFor="birth">
+                        <input
+                          className={styles.add__birth}
+                          type="text"
+                          placeholder='Date of birth'
+                          ref={birth}                             
+                          required
+                        />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className={styles.add__informations}>
+                    <label className={styles.label__informations} htmlFor="informations">
+                      <textarea
+                        className={styles.text__informations}
+                        placeholder='Additional informations'
+                        ref={informations}
+                      />
+                    </label>
+                  </div>
+
+                  <div className={styles.buttons}>
+                    <button
+                      className={styles.save}
+                      name='save'
+                      type='submit'>Save</button>
+                    <button
+                      className={styles.delete}
+                      name='delete'
+                      type='submit'>Delete</button>
+                  </div>
+                </form>
+              </div>
             )}
-        </div>
+          </div>
 
         )}
 
@@ -145,4 +150,5 @@ console.log('Additional informations:', informations);
 
     </main>
   )
+}
 }

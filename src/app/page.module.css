@@ -1,56 +1,83 @@
-.main {
-  margin: 100px 400px 100px 400px;
-}
-
 /* CONTAINERS MAIN */
 
 .inputs__main, 
 .book {
-  background-color: #FFFFFF;
+  /* box model */
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  /* visual */
+  background-color: #FFFFFF;
 }
 
 .inputs__main {
-  margin-bottom: 50px;
+  /* box model */
+  margin: 100px 400px 50PX 400px;
   padding: 50px;
   display: flex;
   justify-content: space-between;
 }
 
 .book {
-  
+  margin: 0 400px 0 400px;
 }
 
 /* DETAILS INPUTS MAIN */
 
 .search {
+  /* box model */
   width: 40%;
-  border: none;
-  border-left: 2px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 2px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  border: 2px solid #DCDCDC;
+  border-radius: 20px;
+  outline: none;
+  /* visual */
+  background-color: #FFFFFF;
+  resize: none;
+  /* typography */
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .add {
-  padding: 10px 0 10px 0;
-  width: 30%;
-  background-color: #4080E2 ;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  font-weight: bold;
+  /* box model */
+  padding: 17px 40px;
+  border-radius: 50px;
   border: none;
-  border-radius: 15px;
+  /* typography */
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  /* visual */
+  background-color: #4080E2;
+  color: #FFFFFF;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  transition: all .5s ease;
+ }
+ 
+ .add:hover {
+  /* visual */
+  background-color: #4080E2;
+  color: #FFFFFF;
+  box-shadow: #4080E2 0px 7px 29px 0px;
   cursor: pointer;
-}
-
-.add:hover {
-  background-color: #376FC6;
-}
+ }
+ 
+ .add:active {
+  /* typography */
+  letter-spacing: 3px;
+  /* visual */
+  background-color: #4080E2;
+  color: #FFFFFF;
+  box-shadow: #4080E2 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 50ms;
+ }
 
 /* LIST CONTACT */
 
 .card {
+  /* box model */
   padding: 25px 50px 25px 50px;
   margin-bottom: 25px;
 }
@@ -58,116 +85,203 @@
 /* FORM ADD CONTACT */
 
 .popup {
+  /* box model */
+  width: 40vw;
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  background-color: #FFFFFF;
   border-radius: 15px;
+  /* visual */
+  background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   /* display: none; */
+  /* positioning */
   z-index: 99;
   position: absolute;
   top: 0;
   right: 0;
-  width: 40vw;
-  /* height: 100vh; */
+  bottom: 0;
 }
 
 /* DETAILS FORM ADD CONTACT */
 
 .container__close {
+  /* box model */
   display: flex;
   justify-content: flex-end;
 }
 
 .close {
+  /* box model */
   margin-bottom: 20px;
+  padding: 2px;
+  border-radius: 5px;
+  border: none;
+  /* typography */
   font-weight: bold;
+  /* visual */
   cursor: pointer;
   background-color: #FFFFFF;;
   color: #CB4242;
-  padding: 2px;
-  border-radius: 5px;
 }
 
 .close:hover {
+  /* visual */
   background-color: #CB4242;
-  color: #FFFFFF;;
+  color: #FFFFFF;
 }
 
 .form {
+  /* box model */
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.inputs__form {
+  /* box model */
   display: flex;
   flex-direction: column;
 }
 
-.inputs__form {
+.names {
   display: flex;
-  flex-direction: column;
+}
+
+.add__firstname,
+.add__lastname {
+width: 90%;
+}
+
+.email,
+.birth {
+  /* box model */
+  width: 100%;
+}
+
+.add__email,
+.add__birth {
+  width: 100%;
 }
 
 .add__firstname,
 .add__lastname,
 .add__email,
 .add__birth {
-  margin-bottom: 15px;
+  /* box model */
   height: 50px;
-  font-size: 20px;
+  margin-bottom: 15px;
   border: none;
-  border-left: 2px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 2px;
+  outline: none;
+  border: 2px solid #DCDCDC;
+  border-radius: 20px;
+  /* typography */
+  font-size: 20px;
 }
 
+/* TEST */
+/* END TEST */
+
 .add__informations {
+  /* box model */
   display: flex;
   margin-bottom: 15px;
+  width: 100%;
+}
+
+.label__informations {
+  /* box model */
   width: 100%;
 }
 
 .text__informations {
+  /* box model */
   width: 100%;
   height: 250px;
   padding: 10px 10px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 16px;
+  border: 2px solid #DCDCDC;
+  border-radius: 20px;
+  outline: none;
+  /* visual */
+  background-color: #FFFFFF;
   resize: none;
+  /* typography */
+  font-size: 16px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .buttons {
+  /* box model */
   display: flex;
   justify-content: space-around;
 }
 
-.save,
-.delete {
-  width: 30%;
-  padding: 10px 0 10px 0;
-  font-size: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
 .save {
-  background-color: #61AD38 ;
+  /* box model */
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: none;
+  /* typography */
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  /* visual */
+  background-color: #61AD38;
   color: #FFFFFF;
-}
-
-.save:hover {
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  transition: all .5s ease;
+ }
+ 
+ .save:hover {
+  /* visual */
   background-color: #477C2A;
-}
-
-.delete {
-  background-color: #CB4242 ;
   color: #FFFFFF;
-}
+  box-shadow: #477C2A 0px 7px 29px 0px;
+  cursor: pointer;
+ }
+ 
+ .save:active {
+  /* typography */
+  letter-spacing: 3px;
+  /* visual */
+  background-color: #477C2A;
+  color: #FFFFFF;
+  box-shadow: #477C2A 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 50ms;
+ }
 
-.delete:hover {
+ .delete {
+ /* box model */
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: none;
+  /* typography */
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  /* visual */
+  background-color: #CB4242;
+  color: #FFFFFF;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  transition: all .5s ease;
+ }
+ 
+ .delete:hover {
+  /* visual */
   background-color: #993333;
-}
+  color: #FFFFFF;
+  box-shadow: #993333 0px 7px 29px 0px;
+  cursor: pointer;
+ }
+ 
+ .delete:active {
+  /* typography */
+  letter-spacing: 3px;
+  /* visual */
+  background-color: #993333;
+  color: #FFFFFF;
+  box-shadow: #993333 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 50ms;
+ }
