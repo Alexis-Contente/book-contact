@@ -1,0 +1,11 @@
+{
+    "db": [
+        {
+            "firstname": "toto",
+            "lastname": "tata",
+            "email": "toto@toto.com",
+            "birth": "01/01/1999",
+            "informations": ""
+        }
+    ]
+}

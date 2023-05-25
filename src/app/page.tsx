@@ -31,22 +31,24 @@ const toggleDisplayForm = () => {
 // console.log('Date of birth:', birth);
 // console.log('Additional informations:', informations);
 
-const firstnameRef = useRef();
-const lastnameRef = useRef();
-const emailRef = useRef();
-const birthRef = useRef();
-const informationsRef = useRef();
+const formRef = useRef(null);
 
 const handleSubmit = (e: any) => {
   e.preventDefault();
 
-const firstname = firstnameRef.current.value;
-const lastname = lastnameRef.current.value;
-const email = emailRef.current.value;
-const birth = birthRef.current.value;
-const informations = informationsRef.current.value;
+  const data = new FormData(
+    formRef.current
+  )
 
-console.log(firstname, lastname, email, birth, informations);
+  const firstname = data.get('firstname')
+  const lastname = data.get('lastname')
+  const email = data.get('email')
+  const birth = data.get('birth')
+  const informations = data.get('informations')
+
+  console.log(firstname, lastname, email, birth, informations);
+}
+
 
   return (
     <main className={styles.main}>
@@ -64,7 +66,7 @@ console.log(firstname, lastname, email, birth, informations);
                   <button className={styles.close} onClick={toggleDisplayForm}>X</button>
                 </div>
 
-                <form className={styles.form} onSubmit={handleSubmit}>
+                <form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
                   <div className={styles.inputs__form}>
                     <div className={styles.names}>
                       <label htmlFor="firstname">
@@ -72,7 +74,7 @@ console.log(firstname, lastname, email, birth, informations);
                           className={styles.add__firstname}
                           type='text'
                           placeholder='Firstname'
-                          ref={firstname}
+                          name='firstname'
                           required
                         />
                       </label>
@@ -81,7 +83,7 @@ console.log(firstname, lastname, email, birth, informations);
                           className={styles.add__lastname}
                           type='text'
                           placeholder='Lastname'
-                          ref={lastname}    
+                          name='lastname'    
                           required
                         />
                       </label>
@@ -92,7 +94,7 @@ console.log(firstname, lastname, email, birth, informations);
                           className={styles.add__email}
                           type="text"
                           placeholder='Email'
-                          ref={email}                              
+                          name='email'                             
                           required
                         />
                       </label>
@@ -103,7 +105,7 @@ console.log(firstname, lastname, email, birth, informations);
                           className={styles.add__birth}
                           type="text"
                           placeholder='Date of birth'
-                          ref={birth}                             
+                          name='birth'                            
                           required
                         />
                       </label>
@@ -115,7 +117,7 @@ console.log(firstname, lastname, email, birth, informations);
                       <textarea
                         className={styles.text__informations}
                         placeholder='Additional informations'
-                        ref={informations}
+                        name='informations'
                       />
                     </label>
                   </div>
@@ -124,7 +126,9 @@ console.log(firstname, lastname, email, birth, informations);
                     <button
                       className={styles.save}
                       name='save'
-                      type='submit'>Save</button>
+                      type='submit'
+                      onClick={handleSubmit}
+                      >Save</button>
                     <button
                       className={styles.delete}
                       name='delete'
@@ -150,5 +154,4 @@ console.log(firstname, lastname, email, birth, informations);
 
     </main>
   )
-}
 }
