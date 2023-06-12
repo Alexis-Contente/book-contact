@@ -1,8 +1,18 @@
 'use client'
 
 import styles from './page.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRef } from 'react';
+import axios from 'axios';
+
+type Contacts = {
+  id: string
+  firstname: string
+  lastname: string
+  email: string
+  birth: number
+  informations: string
+}
 
 export default function Home() {
 
@@ -12,24 +22,6 @@ const [formDisplay, setFormDisplay] = useState(false);
 const toggleDisplayForm = () => {
   setFormDisplay(!formDisplay);
 };
-
-// FUNCTIONS THAT RETRIEVE INFORMATIONS FROM THE ADD FORM
-// const [firstname, setFirstname] = useState('');
-// const [lastname, setLastname] = useState('');
-// const [email, setEmail] = useState('');
-// const [birth, setBirth] = useState('');
-// const [informations, setInformations] = useState('');
-
-// const handleSubmit = (e: any) => {
-//   e.preventDefault();
-// }
-
-// VERIFY INFORMATIONS RECOVERY
-// console.log('Firstname:', firstname);
-// console.log('Lastname:', lastname);
-// console.log('Email:', email);
-// console.log('Date of birth:', birth);
-// console.log('Additional informations:', informations);
 
 const formRef = useRef(null);
 
@@ -49,7 +41,23 @@ const handleSubmit = (e: any) => {
   console.log(firstname, lastname, email, birth, informations);
 }
 
+const [contacts, setContacts] = useState<Contacts[] | null >(null);
 
+const contactData = async () => {
+  axios.get('http://localhost:8000/db')
+      .then(response => {
+        setContacts(response.data.db);
+        console.log(response.data.db);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+}
+
+useEffect(() => {
+  contactData();
+}, [])
+  
   return (
     <main className={styles.main}>
 
@@ -60,12 +68,14 @@ const handleSubmit = (e: any) => {
       
 {/* IL FAUDRA MAPPER SUR LES INFORMATIONS RECUENT */}
       <div className={styles.book}>
-        <div className={styles.card}>
-        <p className={styles.names}>FIRSTNAME LASTNAME</p>
-          <p className={styles.email}>EXEMPLE@EMAIL.COM</p>
-          <p className={styles.birth}>00/00/0000</p>
-          <p className={styles.informations}>ADDITIONAL INFORMATIONS</p>
+        {contacts && contacts.map(contact => (
+        <div className={styles.card} key={contact.id}>
+          <p className={styles.names}>{contact.firstname} {contact.lastname}</p>
+          <p className={styles.email}>{contact.email}</p>
+          <p className={styles.birth}>{contact.birth}</p>
+          <p className={styles.informations}>{contact.informations}</p>
         </div>
+        ))}
       </div>
 
       {formDisplay && (
