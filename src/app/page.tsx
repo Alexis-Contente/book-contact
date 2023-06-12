@@ -54,9 +54,21 @@ const handleSubmit = (e: any) => {
     <main className={styles.main}>
 
       <div className={styles.inputs__main}>
-        <input className={styles.search} type="search" placeholder='Search contact' />
+        <input className={styles.search} type='search' placeholder='Search contact' />
         <button className={styles.add} onClick={toggleDisplayForm}>ADD CONTACT</button>
-        {formDisplay && (
+      </div>
+      
+{/* IL FAUDRA MAPPER SUR LES INFORMATIONS RECUENT */}
+      <div className={styles.book}>
+        <div className={styles.card}>
+        <p className={styles.names}>FIRSTNAME LASTNAME</p>
+          <p className={styles.email}>EXEMPLE@EMAIL.COM</p>
+          <p className={styles.birth}>00/00/0000</p>
+          <p className={styles.informations}>ADDITIONAL INFORMATIONS</p>
+        </div>
+      </div>
+
+      {formDisplay && (
           
           <div>
             {open && (
@@ -69,7 +81,7 @@ const handleSubmit = (e: any) => {
                 <form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
                   <div className={styles.inputs__form}>
                     <div className={styles.names}>
-                      <label htmlFor="firstname">
+                      <label htmlFor='firstname'>
                         <input
                           className={styles.add__firstname}
                           type='text'
@@ -78,7 +90,7 @@ const handleSubmit = (e: any) => {
                           required
                         />
                       </label>
-                      <label htmlFor="lastname">
+                      <label htmlFor='lastname'>
                         <input
                           className={styles.add__lastname}
                           type='text'
@@ -89,10 +101,10 @@ const handleSubmit = (e: any) => {
                       </label>
                     </div>
                     <div className={styles.email}>
-                      <label htmlFor="email">
+                      <label htmlFor='email'>
                         <input
                           className={styles.add__email}
-                          type="text"
+                          type='text'
                           placeholder='Email'
                           name='email'                             
                           required
@@ -103,7 +115,8 @@ const handleSubmit = (e: any) => {
                       <label htmlFor="birth">
                         <input
                           className={styles.add__birth}
-                          type="text"
+                          type='date'
+                          value='1990-01-01'
                           placeholder='Date of birth'
                           name='birth'                            
                           required
@@ -113,7 +126,7 @@ const handleSubmit = (e: any) => {
                   </div>
 
                   <div className={styles.add__informations}>
-                    <label className={styles.label__informations} htmlFor="informations">
+                    <label className={styles.label__informations} htmlFor='informations'>
                       <textarea
                         className={styles.text__informations}
                         placeholder='Additional informations'
@@ -141,16 +154,6 @@ const handleSubmit = (e: any) => {
 
         )}
 
-      </div>
-{/* IL FAUDRA MAPPER SUR LES INFORMATIONS RECUENT */}
-      <div className={styles.book}>
-        <div className={styles.card}>
-        <p className={styles.names}>FIRSTNAME LASTNAME</p>
-          <p className={styles.email}>EXEMPLE@EMAIL.COM</p>
-          <p className={styles.birth}>00/00/0000</p>
-          <p className={styles.informations}>ADDITIONAL INFORMATIONS</p>
-        </div>
-      </div>
 
     </main>
   )

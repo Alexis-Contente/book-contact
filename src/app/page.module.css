@@ -107,7 +107,7 @@
 .container__close {
   /* box model */
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .close {
@@ -135,21 +135,26 @@
   display: flex;
   flex-direction: column;
   margin: 30px;
+  height: 100%;
 }
 
 .inputs__form {
   /* box model */
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .names {
+  /* box model */
   display: flex;
+  justify-content: space-between
 }
 
 .add__firstname,
 .add__lastname {
-width: 90%;
+  /* box model */
+width: 100%;
 }
 
 .email,
@@ -160,6 +165,7 @@ width: 90%;
 
 .add__email,
 .add__birth {
+  /* box model */
   width: 100%;
 }
 
@@ -177,9 +183,6 @@ width: 90%;
   /* typography */
   font-size: 20px;
 }
-
-/* TEST */
-/* END TEST */
 
 .add__informations {
   /* box model */
@@ -218,6 +221,7 @@ width: 90%;
 
 .save {
   /* box model */
+  width: 10em;
   padding: 17px 40px;
   border-radius: 50px;
   border: none;
@@ -225,6 +229,7 @@ width: 90%;
   font-size: 15px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  font-weight: bold;
   /* visual */
   background-color: #61AD38;
   color: #FFFFFF;
@@ -253,6 +258,7 @@ width: 90%;
 
  .delete {
  /* box model */
+  width: 10em;
   padding: 17px 40px;
   border-radius: 50px;
   border: none;
@@ -260,6 +266,7 @@ width: 90%;
   font-size: 15px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  font-weight: bold;
   /* visual */
   background-color: #CB4242;
   color: #FFFFFF;
