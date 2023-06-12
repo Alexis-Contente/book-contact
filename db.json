@@ -1,12 +1,5 @@
 {
-    "db": [
-        {
-            "id": "1",
-            "firstname": "Alexis",
-            "lastname": "Contente",
-            "email": "alexis.contente@gmail.com",
-            "birth": "21/04/1993",
-            "informations": "Beau goss"
-        }
-    ]
+  "db": [
+  
+  ]
 }

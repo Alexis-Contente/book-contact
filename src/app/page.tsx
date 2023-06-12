@@ -39,11 +39,29 @@ const handleSubmit = (e: any) => {
   const informations = data.get('informations')
 
   console.log(firstname, lastname, email, birth, informations);
+
+  axios.post('http://localhost:8000/db',{
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    birth: birth,
+    informations: informations,
+  })
+  .then(response => {
+    window.location.reload();
+    console.log(response)
+    return response
+    
+  })
+  
+  .catch(error => {
+    console.error(error);
+  });
 }
 
-const [contacts, setContacts] = useState<Contacts[] | null >(null);
+const [contacts, setContacts] = useState<Contacts[] | null>(null);
 
-const contactData = async () => {
+const contactsData = async () => {
   axios.get('http://localhost:8000/db')
       .then(response => {
         setContacts(response.data.db);
@@ -55,7 +73,7 @@ const contactData = async () => {
 }
 
 useEffect(() => {
-  contactData();
+  contactsData();
 }, [])
   
   return (
@@ -67,16 +85,16 @@ useEffect(() => {
       </div>
       
 {/* IL FAUDRA MAPPER SUR LES INFORMATIONS RECUENT */}
-      <div className={styles.book}>
-        {contacts && contacts.map(contact => (
-        <div className={styles.card} key={contact.id}>
-          <p className={styles.names}>{contact.firstname} {contact.lastname}</p>
-          <p className={styles.email}>{contact.email}</p>
-          <p className={styles.birth}>{contact.birth}</p>
-          <p className={styles.informations}>{contact.informations}</p>
+      {contacts && contacts.map(contact => (
+        <div className={styles.book} key={contact.id}>
+          <div className={styles.card} >
+            <p className={styles.names}>{contact.firstname} {contact.lastname}</p>
+            <p className={styles.email}>{contact.email}</p>
+            <p className={styles.birth}>{contact.birth}</p>
+            <p className={styles.informations}>{contact.informations}</p>
+          </div>
         </div>
-        ))}
-      </div>
+      ))}
 
       {formDisplay && (
           
@@ -126,7 +144,6 @@ useEffect(() => {
                         <input
                           className={styles.add__birth}
                           type='date'
-                          value='1990-01-01'
                           placeholder='Date of birth'
                           name='birth'                            
                           required
