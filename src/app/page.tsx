@@ -25,6 +25,7 @@ const toggleDisplayForm = () => {
 
 const formRef = useRef(null);
 
+// HANDLE THAT SAVE INFORMATIONS OF A NEW CONTACT
 const handleSubmit = (e: any) => {
   e.preventDefault();
 
@@ -59,6 +60,7 @@ const handleSubmit = (e: any) => {
   });
 }
 
+// FUNCTION THAT GET INFORMATIONS OF CONTACTS FOR DISPLAY
 const [contacts, setContacts] = useState<Contacts[] | null>(null);
 
 const contactsData = async () => {
@@ -75,7 +77,8 @@ const contactsData = async () => {
 useEffect(() => {
   contactsData();
 }, [])
-  
+
+// RETURN TO DISPLAY CONTACTS WITH MAPPING
   return (
     <main className={styles.main}>
 
@@ -84,9 +87,8 @@ useEffect(() => {
         <button className={styles.add} onClick={toggleDisplayForm}>ADD CONTACT</button>
       </div>
       
-{/* IL FAUDRA MAPPER SUR LES INFORMATIONS RECUENT */}
       {contacts && contacts.map(contact => (
-        <div className={styles.book} key={contact.id}>
+        <div className={styles.book} key={contact.id} onClick={toggleDisplayForm}>
           <div className={styles.card} >
             <p className={styles.names}>{contact.firstname} {contact.lastname}</p>
             <p className={styles.email}>{contact.email}</p>
@@ -96,6 +98,7 @@ useEffect(() => {
         </div>
       ))}
 
+{/* MODAL TO ADD A NEW CONTACT OR TO MODIFY AN EXISTING CONTACT */}
       {formDisplay && (
           
           <div>
@@ -167,7 +170,7 @@ useEffect(() => {
                       className={styles.save}
                       name='save'
                       type='submit'
-                      onClick={handleSubmit}
+                      // onClick={handleSubmit}
                       >Save</button>
                     <button
                       className={styles.delete}
