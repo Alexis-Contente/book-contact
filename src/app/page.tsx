@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import axios from 'axios';
+import contactStore from './store';
 
 type Contacts = {
   id: string
@@ -78,6 +79,20 @@ useEffect(() => {
   contactsData();
 }, [])
 
+const store = contactStore();
+console.log(store);
+const {setFirstname, setLastname, setBirth, setEmail, setInformations} = contactStore();
+
+const toggleDisplayFormContact = (contact: any) => {
+  setFormDisplay(!formDisplay);
+  // console.log(contact.firstname);
+  setFirstname(contact.firstname);
+  setLastname(contact.lastname);
+  setBirth(contact.birth);
+  setEmail(contact.email);
+  setInformations(contact.informations);
+}
+
 // RETURN TO DISPLAY CONTACTS WITH MAPPING
   return (
     <main className={styles.main}>
@@ -88,7 +103,7 @@ useEffect(() => {
       </div>
       
       {contacts && contacts.map(contact => (
-        <div className={styles.book} key={contact.id} onClick={toggleDisplayForm}>
+        <div className={styles.book} key={contact.id} onClick={()=>toggleDisplayFormContact(contact)}>
           <div className={styles.card} >
             <p className={styles.names}>{contact.firstname} {contact.lastname}</p>
             <p className={styles.email}>{contact.email}</p>
@@ -118,17 +133,19 @@ useEffect(() => {
                           type='text'
                           placeholder='Firstname'
                           name='firstname'
-                          required
-                        />
+                          required>
+                          {store.firstname ? store.firstname : '' }
+                        </input>
                       </label>
                       <label htmlFor='lastname'>
                         <input
                           className={styles.add__lastname}
                           type='text'
                           placeholder='Lastname'
-                          name='lastname'    
-                          required
-                        />
+                          name='lastname'  
+                          required>
+                          {store.lastname ? store.lastname : '' }  
+                        </input>
                       </label>
                     </div>
                     <div className={styles.email}>
@@ -137,9 +154,10 @@ useEffect(() => {
                           className={styles.add__email}
                           type='text'
                           placeholder='Email'
-                          name='email'                             
-                          required
-                        />
+                          name='email'                            
+                          required>
+                          {store.email ? store.email : '' }
+                        </input>
                       </label>
                     </div>
                     <div className={styles.birth}>
@@ -149,8 +167,9 @@ useEffect(() => {
                           type='date'
                           placeholder='Date of birth'
                           name='birth'                            
-                          required
-                        />
+                          required>
+                          {store.birth ? store.birth : '' }
+                        </input>
                       </label>
                     </div>
                   </div>
@@ -160,8 +179,9 @@ useEffect(() => {
                       <textarea
                         className={styles.text__informations}
                         placeholder='Additional informations'
-                        name='informations'
-                      />
+                        name='informations'>
+                        {store.informations ? store.informations : '' }
+                      </textarea>
                     </label>
                   </div>
 
