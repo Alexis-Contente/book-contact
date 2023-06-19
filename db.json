@@ -7,6 +7,14 @@
       "birth": "1993-04-21",
       "informations": "Dev web to the top",
       "id": 1
+    },
+    {
+      "firstname": "alexis",
+      "lastname": "contente",
+      "email": "alexis.contente@gmail.Com",
+      "birth": "1993-04-21",
+      "informations": "",
+      "id": 2
     }
   ]
 }

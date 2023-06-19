@@ -12,7 +12,7 @@ type Props = {
 
 export default function AddForm(props: Props) {
 
-    const { formDisplay, toggleDisplayForm} = props
+    const {formDisplay, toggleDisplayForm} = props
 
 // // TOGGLE THAT OPEN THE ADD FORM
 // const [formDisplay, setFormDisplay] = useState(false);
@@ -21,41 +21,40 @@ export default function AddForm(props: Props) {
 //   setFormDisplay(!formDisplay);
 // };
 
-const formRef = useRef(null);
+    const formRef = useRef(null);
 
 // HANDLE THAT SAVE INFORMATIONS OF A NEW CONTACT
-const handleSubmit = (e: any) => {
-  e.preventDefault();
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
 
-  const data = new FormData(
-    formRef.current
-  )
+    const data = new FormData(
+        formRef.current
+    )
 
-  const firstname = data.get('firstname')
-  const lastname = data.get('lastname')
-  const email = data.get('email')
-  const birth = data.get('birth')
-  const informations = data.get('informations')
+    const firstname = data.get('firstname')
+    const lastname = data.get('lastname')
+    const email = data.get('email')
+    const birth = data.get('birth')
+    const informations = data.get('informations')
+    console.log(firstname, lastname, email, birth, informations);
 
-  console.log(firstname, lastname, email, birth, informations);
-
-  axios.post('http://localhost:8000/db',
-    {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      birth: birth,
-      informations: informations,
-    })
-    .then(response => {
-      window.location.reload();
-      console.log(response)
-      return response
-    })
-    .catch(error => {
-      console.error(error);
-    });
-};
+    axios.post('http://localhost:8000/db',
+        {
+            firstname: firstname,
+        lastname: lastname,
+        email: email,
+        birth: birth,
+        informations: informations,
+        })
+        .then(response => {
+            window.location.reload();
+            console.log(response)
+            return response
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    };
 
     return (
         <>
