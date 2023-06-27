@@ -34,21 +34,12 @@ export default function App() {
       .then((response) => {
         const data = response.data;
         setUser(data);
-        // console.log(response.data);
+        console.log(response.data);
+        return response;
       })
       .catch((error) => {
         console.error(error);
       });
-
-    // let cardsData = null;
-    // try {
-    //   const response = await axios.get(`http://localhost:8000/db/${id}`);
-    //   cardsData = response.data;
-    //   console.log(cardsData);
-    // } catch (error) {
-    //   console.error('Erreur lors de la requjête Axios:', error);
-    // }
-    // return { cardsData };
   };
 
   return (
